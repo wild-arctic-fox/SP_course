@@ -1,0 +1,35 @@
+﻿  Lab0_SP.cpp
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(9,12): warning C4477: "printf": в строке форматирования "%d" требуется аргумент типа "int", но вариативный аргумент "1" имеет тип "size_t"
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(9,12): message : рекомендуется использовать "%zd" в строке форматирования
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(13,12): warning C4477: "printf": в строке форматирования "%d" требуется аргумент типа "int", но вариативный аргумент "1" имеет тип "size_t"
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(13,12): message : рекомендуется использовать "%zd" в строке форматирования
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(17,12): warning C4477: "printf": в строке форматирования "%d" требуется аргумент типа "int", но вариативный аргумент "1" имеет тип "size_t"
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(17,12): message : рекомендуется использовать "%zd" в строке форматирования
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(23,12): warning C4477: "printf": в строке форматирования "%d" требуется аргумент типа "int", но вариативный аргумент "1" имеет тип "size_t"
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(23,12): message : рекомендуется использовать "%zd" в строке форматирования
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(27,12): warning C4477: "printf": в строке форматирования "%d" требуется аргумент типа "int", но вариативный аргумент "1" имеет тип "size_t"
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(27,12): message : рекомендуется использовать "%zd" в строке форматирования
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(33,12): warning C4477: "printf": в строке форматирования "%d" требуется аргумент типа "int", но вариативный аргумент "1" имеет тип "size_t"
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(33,12): message : рекомендуется использовать "%zd" в строке форматирования
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(37,12): warning C4477: "printf": в строке форматирования "%d" требуется аргумент типа "int", но вариативный аргумент "1" имеет тип "size_t"
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(37,12): message : рекомендуется использовать "%zd" в строке форматирования
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(43,12): warning C4477: "printf": в строке форматирования "%d" требуется аргумент типа "int", но вариативный аргумент "1" имеет тип "size_t"
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(43,12): message : рекомендуется использовать "%zd" в строке форматирования
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(47,12): warning C4477: "printf": в строке форматирования "%d" требуется аргумент типа "int", но вариативный аргумент "1" имеет тип "size_t"
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(47,12): message : рекомендуется использовать "%zd" в строке форматирования
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(51,12): warning C4477: "printf": в строке форматирования "%d" требуется аргумент типа "int", но вариативный аргумент "1" имеет тип "size_t"
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(51,12): message : рекомендуется использовать "%zd" в строке форматирования
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(53,12): warning C4477: "printf": в строке форматирования "%llu" требуется аргумент типа "unsigned __int64", но вариативный аргумент "1" имеет тип "int"
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(53,12): message : рекомендуется использовать "%u" в строке форматирования
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(53,12): message : рекомендуется использовать "%I32u" в строке форматирования
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(55,12): warning C4477: "printf": в строке форматирования "%d" требуется аргумент типа "int", но вариативный аргумент "1" имеет тип "size_t"
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(55,12): message : рекомендуется использовать "%zd" в строке форматирования
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(61,12): warning C4477: "printf": в строке форматирования "%d" требуется аргумент типа "int", но вариативный аргумент "1" имеет тип "size_t"
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(61,12): message : рекомендуется использовать "%zd" в строке форматирования
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(67,12): warning C4477: "printf": в строке форматирования "%d" требуется аргумент типа "int", но вариативный аргумент "1" имеет тип "size_t"
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(67,12): message : рекомендуется использовать "%zd" в строке форматирования
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(71,12): warning C4477: "printf": в строке форматирования "%d" требуется аргумент типа "int", но вариативный аргумент "1" имеет тип "size_t"
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(71,12): message : рекомендуется использовать "%zd" в строке форматирования
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(77,12): warning C4477: "printf": в строке форматирования "%d" требуется аргумент типа "int", но вариативный аргумент "1" имеет тип "size_t"
+F:\Desktop\SP_course\Lab0_SP\Lab0_SP.cpp(77,12): message : рекомендуется использовать "%zd" в строке форматирования
+  Lab0_SP.vcxproj -> F:\Desktop\SP_course\Lab0_SP\x64\Debug\Lab0_SP.exe

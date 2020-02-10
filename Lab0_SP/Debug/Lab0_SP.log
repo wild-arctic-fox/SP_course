@@ -1,0 +1,17 @@
+﻿  Lab0_SP.cpp
+F:\Desktop\SP_Labs\Lab0_SP\Lab0_SP.cpp(51,12): warning C4477: "printf": в строке форматирования "%lli" требуется аргумент типа "__int64", но вариативный аргумент "1" имеет тип "unsigned int"
+F:\Desktop\SP_Labs\Lab0_SP\Lab0_SP.cpp(51,12): message : рекомендуется использовать "%i" в строке форматирования
+F:\Desktop\SP_Labs\Lab0_SP\Lab0_SP.cpp(51,12): message : рекомендуется использовать "%Ii" в строке форматирования
+F:\Desktop\SP_Labs\Lab0_SP\Lab0_SP.cpp(51,12): message : рекомендуется использовать "%I32i" в строке форматирования
+F:\Desktop\SP_Labs\Lab0_SP\Lab0_SP.cpp(53,12): warning C4477: "printf": в строке форматирования "%llu" требуется аргумент типа "unsigned __int64", но вариативный аргумент "1" имеет тип "int"
+F:\Desktop\SP_Labs\Lab0_SP\Lab0_SP.cpp(53,12): message : рекомендуется использовать "%u" в строке форматирования
+F:\Desktop\SP_Labs\Lab0_SP\Lab0_SP.cpp(53,12): message : рекомендуется использовать "%Iu" в строке форматирования
+F:\Desktop\SP_Labs\Lab0_SP\Lab0_SP.cpp(53,12): message : рекомендуется использовать "%I32u" в строке форматирования
+F:\Desktop\SP_Labs\Lab0_SP\Lab0_SP.cpp(55,12): warning C4477: "printf": в строке форматирования "%llu" требуется аргумент типа "unsigned __int64", но вариативный аргумент "1" имеет тип "unsigned int"
+F:\Desktop\SP_Labs\Lab0_SP\Lab0_SP.cpp(55,12): message : рекомендуется использовать "%u" в строке форматирования
+F:\Desktop\SP_Labs\Lab0_SP\Lab0_SP.cpp(55,12): message : рекомендуется использовать "%Iu" в строке форматирования
+F:\Desktop\SP_Labs\Lab0_SP\Lab0_SP.cpp(55,12): message : рекомендуется использовать "%I32u" в строке форматирования
+F:\Desktop\SP_Labs\Lab0_SP\Lab0_SP.cpp(61,12): warning C4477: "printf": в строке форматирования "%f" требуется аргумент типа "double", но вариативный аргумент "1" имеет тип "unsigned int"
+F:\Desktop\SP_Labs\Lab0_SP\Lab0_SP.cpp(67,12): warning C4477: "printf": в строке форматирования "%f" требуется аргумент типа "double", но вариативный аргумент "1" имеет тип "unsigned int"
+F:\Desktop\SP_Labs\Lab0_SP\Lab0_SP.cpp(71,12): warning C4477: "printf": в строке форматирования "%Lf" требуется аргумент типа "long double", но вариативный аргумент "1" имеет тип "unsigned int"
+  Lab0_SP.vcxproj -> F:\Desktop\SP_Labs\Lab0_SP\Debug\Lab0_SP.exe
