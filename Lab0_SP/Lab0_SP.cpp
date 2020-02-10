@@ -56,18 +56,18 @@ void printLong() {
 }
 
 void printFloat() {
-    printf("The minimum value of FLOAT = %f\n", FLT_MIN);
-    printf("The maximum value of FLOAT = %f\n", FLT_MAX);
+    printf("The minimum value of FLOAT = %e\n", FLT_MIN);
+    printf("The maximum value of FLOAT = %e\n", FLT_MAX);
     printf("The size of FLOAT          = %d\n\n", sizeof(float));
 }
 
 void printDouble() {
-    printf("The minimum value of DOUBLE = %f\n", DBL_MIN);
-    printf("The maximum value of DOUBLE = %f\n", DBL_MAX);
+    printf("The minimum value of DOUBLE = %e\n", DBL_MIN);
+    printf("The maximum value of DOUBLE = %e\n", DBL_MAX);
     printf("The size of DOUBLE          = %d\n\n", sizeof(double));
 
-    printf("The minimum value of LONG DOUBLE = %Lf\n", LDBL_MIN);
-    printf("The maximum value of LONG DOUBLE = %Lf\n", LDBL_MAX);
+    printf("The minimum value of LONG DOUBLE = %Le\n", LDBL_MIN);
+    printf("The maximum value of LONG DOUBLE = %Le\n", LDBL_MAX);
     printf("The size of LONG DOUBLE          = %d\n\n", sizeof(long double));
 }
 
