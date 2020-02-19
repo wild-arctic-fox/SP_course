@@ -4,8 +4,6 @@
 
 #define nNumberOfBytesToRead  2048
 
-//F:\Desktop\SP_course\Lab1_SP\Lab1.2_SP\Debug\Lab1.2_SP.exe -a F:\Desktop\SP_course\Lab1_SP\Lab1.2_SP\from_ascii.txt F:\Desktop\SP_course\Lab1_SP\Lab1.2_SP\uni1.txt
-
 void incorrect_input() {
 	printf("\nYou made a mistake !!!\n"); 
 	printf("Only 4 arguments available:\n");
@@ -57,7 +55,32 @@ void from_ascii_to_unicode(HANDLE ascii_file, HANDLE new_file) {
 }
 
 void from_unicode_to_ascii(HANDLE unicode_file, HANDLE new_file) {
-	//TODO
+	setlocale(LC_ALL, "Russian");
+	BYTE lpBuffer[nNumberOfBytesToRead];
+	DWORD lpNumberOfBytesRead;
+	while (ReadFile(unicode_file, lpBuffer, nNumberOfBytesToRead, (LPDWORD)&lpNumberOfBytesRead, NULL))
+	{
+		if (lpNumberOfBytesRead == 0) {
+			break;
+		}
+		else {
+			//сначала вы вызываете MultiByteToWideChar, чтобы получить размер конечной строки (юникод)
+			int u_str_length = MultiByteToWideChar(CP_UTF8, 0, (LPCCH)lpBuffer, lpNumberOfBytesRead, NULL, 0);
+			//указатель на юникод строку, которую необходимо конвертировать
+			wchar_t* u_str = new wchar_t[u_str_length];
+			MultiByteToWideChar(CP_UTF8, 0, (LPCCH)lpBuffer, lpNumberOfBytesRead, u_str, u_str_length);
+			//сначала вы вызываете WideCharToMultiByte, чтобы получить размер конечной строки (ANSI)
+			int a_str_length = WideCharToMultiByte(CP_ACP, 0, u_str, u_str_length, NULL, 0, NULL, NULL);
+			//указатель на буфер, который получает преобразованную строку.
+			char* a_str = new char[a_str_length];
+			WideCharToMultiByte(CP_ACP, 0, u_str, u_str_length, a_str, a_str_length, NULL, NULL);
+			printf("%s", a_str);
+			if (!WriteFile(new_file, a_str, a_str_length * sizeof(char) , (LPDWORD)&lpNumberOfBytesRead, NULL)) {
+				printf("\nSomething went wrong (\nWriting FAILED\n");
+				exit(0);
+			}
+		}
+	}
 	CloseHandle(unicode_file);
 	CloseHandle(new_file);
 	exit(0);
