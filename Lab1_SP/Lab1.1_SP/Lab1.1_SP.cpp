@@ -10,8 +10,6 @@ void generate_error() {
     setlocale(LC_ALL, "Russian");
     //Contains information about the current state of both physical and virtual memory
     MEMORYSTATUS mem_info;
-    //The size of the MEMORYSTATUS data structure, in bytes.
-    mem_info.dwLength = sizeof(mem_info);
     //Retrieves information about the system's current usage of both physical and virtual memory.
     GlobalMemoryStatus(&mem_info);
     // Generate an error
