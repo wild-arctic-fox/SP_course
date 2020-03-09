@@ -158,29 +158,35 @@ void change_dir() {
 
 void main(int argc, char* argv[])
 {
-	begin:
-	printCommands();
-	char command[6]; 
-	printf("Input command:");
-	scanf_s("%s",command,6);
-	if (strcmp(command, "cd")==0) {
-		change_dir();
-	}else if(strcmp(command, "pwd") == 0){
-		print_working_directory();
-	}else if (strcmp(command, "cp") == 0){
-		copy_file();
-	}else if (strcmp(command, "mkdir") == 0){
-		create_dir();
-	}else if (strcmp(command, "pfi") == 0){
-		print_file_info();
-	}else if (strcmp(command, "rmd") == 0){
-		remove_dir();
-	}else if (strcmp(command, "rmf") == 0){
-		remove_file();
-	}else{
-		printf("\nIncorrect argument !!!");
-		goto begin;
+	while (true) {
+		printCommands();
+		char command[6];
+		printf("Input command:");
+		scanf_s("%s", command, 6);
+		if (strcmp(command, "cd") == 0) {
+			change_dir();
+		}
+		else if (strcmp(command, "pwd") == 0) {
+			print_working_directory();
+		}
+		else if (strcmp(command, "cp") == 0) {
+			copy_file();
+		}
+		else if (strcmp(command, "mkdir") == 0) {
+			create_dir();
+		}
+		else if (strcmp(command, "pfi") == 0) {
+			print_file_info();
+		}
+		else if (strcmp(command, "rmd") == 0) {
+			remove_dir();
+		}
+		else if (strcmp(command, "rmf") == 0) {
+			remove_file();
+		}
+		else {
+			printf("\nIncorrect argument !!!");
+		}
 	}
-	goto begin;
 	exit(0);
 }
