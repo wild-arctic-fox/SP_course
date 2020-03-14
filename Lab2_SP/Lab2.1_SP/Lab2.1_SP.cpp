@@ -51,6 +51,7 @@ void init_records(int init_num) {
 		//init header
 		header_information.not_empty_record_count = 0;
 		header_information.file_size = sizeof(RECORD) * init_num + sizeof(header_information);
+		//convert time
 		GetLocalTime(&system_time);
 		SystemTimeToFileTime(&system_time, &file_time);
 		FileTimeToSystemTime(&file_time, &system_time2);
@@ -60,7 +61,7 @@ void init_records(int init_num) {
 			//write header
 			SetFilePointer(hFile, 0, NULL, FILE_BEGIN);
 			WriteFile(hFile, &header_information, sizeof(HEADER), NULL, NULL);
-			//write records
+			//write records after header
 			SetFilePointer(hFile, NULL, NULL, FILE_END);
 			for (int i = 0; i < init_num; i++) {
 				r.record_number = i;
@@ -78,6 +79,7 @@ HEADER get_header_info(bool print) {
 	DWORD bytes;
 	HANDLE hFile = CreateFileA(FILE_NAME, GENERIC_READ, NULL, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 	if (hFile != INVALID_HANDLE_VALUE) {
+		//read header info & put it into structure
 		SetFilePointer(hFile, NULL, NULL, FILE_BEGIN);
 		ReadFile(hFile, &header_information, sizeof(HEADER), &bytes, NULL);
 		CloseHandle(hFile);
@@ -94,6 +96,9 @@ HEADER get_header_info(bool print) {
 
 vector<RECORD> get_records_info(int count,bool print) {
 	//dynamic array of records
+	//The vector is a container that organizes elements of a given type in a linear sequence.
+	//It enables fast random access to any element, 
+	//and dynamic additions and removals to and from the sequence. 
 	vector<RECORD> records(0);
 	RECORD r; //record item
 	DWORD bytes;
@@ -102,7 +107,7 @@ vector<RECORD> get_records_info(int count,bool print) {
 		SetFilePointer(hFile, sizeof(HEADER), NULL, FILE_BEGIN);
 		do {
 			ReadFile(hFile, &r, sizeof(RECORD), &bytes, NULL);
-			records.push_back(r);
+			records.push_back(r);//Adds an element to the end of the vector.
 		} while (bytes != 0);
 		if (print) { //print info if it is needed
 			SYSTEMTIME systemTime;
@@ -147,6 +152,7 @@ void modify_record(int count,bool remove) {
 			records[id].counter = 0;
 			FileTimeToSystemTime(&records[id].creation, &systemTime);
 		}
+		//rewrite info
 		HANDLE hFile = CreateFileA(FILE_NAME, GENERIC_WRITE, NULL, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 		SetFilePointer(hFile, NULL, NULL, FILE_BEGIN);
 		WriteFile(hFile, &header_info, sizeof(HEADER), NULL, NULL);
