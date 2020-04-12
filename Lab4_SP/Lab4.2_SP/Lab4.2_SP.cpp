@@ -93,8 +93,8 @@ void runThreads(int threadsCount)
 		}
 		threadHandles[i] = CreateThread(
 			NULL,			  //A pointer to a SECURITY_ATTRIBUTES
-			0,				  //The initial size of the stack, in bytes.
-			executedByThread, //A pointer to the application-defined function to be executed by the thread.
+			0,			  //The initial size of the stack, in bytes.
+			executedByThread, 	  //A pointer to the application-defined function to be executed by the thread.
 			arrays[i],		  //A pointer to a variable to be passed to the thread.
 			NULL,			  //The flags that control the creation of the thread.
 			&ids[i]);		  //A pointer to a variable that receives the thread identifier
