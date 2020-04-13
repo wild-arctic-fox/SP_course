@@ -11,18 +11,18 @@ Results
 Files, that will be archived.
 ![](imgs/2.png)
 
-![](Lab4_SP/imgs/1.png)
+![](imgs/1.png)
 
 Created archive
 
-![](Lab4_SP/imgs/3.png)
+![](imgs/3.png)
 
-![](Lab4_SP/imgs/4.png)
+![](imgs/4.png)
 
 Result folder
 
-![](Lab4_SP/imgs/5.png)
+![](imgs/5.png)
 
 Incorrect input
 
-![](Lab4_SP/imgs/6.png)
+![](imgs/6.png)
