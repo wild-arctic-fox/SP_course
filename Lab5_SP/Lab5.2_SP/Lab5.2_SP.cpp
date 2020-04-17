@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <Windows.h>
 #include <locale.h>
+#include <ctime>
 
 #define numberOfThreads 10
 
@@ -22,7 +23,54 @@ void print_problems() {
 
 DWORD WINAPI ExecutedByThread(LPVOID lpParam)
 {
-	// Todo
+	DWORD state, bytesWritten;
+	HANDLE file;
+	clock_t start, finish;
+	char* string = new char[10];
+	bool run = true;
+
+	// If the function succeeds, the return value indicates the 
+	// event that caused the function to return
+	state = WaitForSingleObject(semaphore, 3);
+	while (run == true)
+	{
+		//The state of the specified object is signaled.
+		if (state == WAIT_OBJECT_0)
+		{
+			start = clock();
+			//sleep mode 1
+			Sleep(3 * 1000);
+			printf("\nThread => %d is in critical section\n", GetCurrentThreadId());
+
+			//Create file
+			file = CreateFileA("result.txt", GENERIC_WRITE, FILE_SHARE_WRITE, NULL, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+			finish = clock();
+
+			//count time
+			double duration = finish - start;
+
+			SetFilePointer(file, 0, NULL, FILE_END);
+			//Write a formatted string to character string buffer
+			sprintf(string, "%f", duration);
+
+			//Write result to the file
+			WriteFile(file, string, sizeof(string), &bytesWritten, NULL);
+
+			if (file == INVALID_HANDLE_VALUE){
+				print_problems();
+			}
+
+			//Leave critical section
+
+			run = false;
+			//sleep mode 2
+			Sleep(3 * 1000);
+			printf("\nThread => %d is not in critical section anymore\n", GetCurrentThreadId());
+			if (!ReleaseSemaphore(semaphore, 1, NULL)){
+				print_problems();
+			}
+		}
+	}
 	return 0;
 }
 
@@ -43,6 +91,7 @@ int main()
 		return 1;
 	}
 
+	//Create threads
 	for (int i = 0; i < numberOfThreads; i++)
 	{
 		threads[i] = CreateThread(NULL, 0, ExecutedByThread, NULL, 0, &id);
