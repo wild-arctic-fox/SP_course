@@ -5,6 +5,8 @@
 #include <ctime>
 
 #define numberOfThreads 10
+#define initSemaphoreCount 3
+#define maxSemaphoreCount 3
 
 HANDLE semaphore;
 
@@ -28,7 +30,7 @@ DWORD WINAPI ExecutedByThread(LPVOID lpParam)
 	clock_t start, finish;
 	char* string = new char[10];
 	bool run = true;
-
+	const int second = 1000; 
 	// If the function succeeds, the return value indicates the 
 	// event that caused the function to return
 	state = WaitForSingleObject(semaphore, 3);
@@ -39,7 +41,7 @@ DWORD WINAPI ExecutedByThread(LPVOID lpParam)
 		{
 			start = clock();
 			//sleep mode 1
-			Sleep(3 * 1000);
+			Sleep(3 * second);
 			printf("\nThread => %d is in critical section\n", GetCurrentThreadId());
 
 			//Create file
@@ -64,7 +66,7 @@ DWORD WINAPI ExecutedByThread(LPVOID lpParam)
 
 			run = false;
 			//sleep mode 2
-			Sleep(3 * 1000);
+			Sleep(3 * second);
 			printf("\nThread => %d is not in critical section anymore\n", GetCurrentThreadId());
 			if (!ReleaseSemaphore(semaphore, 1, NULL)){
 				print_problems();
@@ -80,10 +82,10 @@ int main()
 	DWORD id;
 
 	semaphore = CreateSemaphore(
-		NULL, // A pointer to a SECURITY_ATTRIBUTES structure.
-		3,	  // The initial count for the semaphore object. 
-		3,	  // The maximum count for the semaphore object.
-		NULL  // The name of the semaphore object.
+		NULL,				  // A pointer to a SECURITY_ATTRIBUTES structure.
+		initSemaphoreCount,	  // The initial count for the semaphore object. 
+		maxSemaphoreCount,	  // The maximum count for the semaphore object.
+		NULL				  // The name of the semaphore object.
 	);
 
 	if (semaphore == NULL){
