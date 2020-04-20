@@ -3,6 +3,9 @@
 #include <Windows.h>
 #include <ctime>
 
+#define CRITICAL_SECTION_MODE 0
+#define NOT_CRITICAL_SECTION_MODE 1
+
 #define numberOfThreads 3
 #define amountOfNumbers 10101110 // 10 101 110
 
@@ -43,48 +46,50 @@ void generate()
 
 DWORD WINAPI findSum(LPVOID mode)
 {
-	if (!InitializeCriticalSectionAndSpinCount(&criricalSection, 0x00000400)){
-		return 0;
+	if (NOT_CRITICAL_SECTION_MODE) {
+		sum();
 	}
-	if (!(int)mode) {
+	else { // CRITICAL_SECTION_MODE
+		if (!InitializeCriticalSectionAndSpinCount(&criricalSection, 0x00000400)) {
+			return 0;
+		}
 		EnterCriticalSection(&criricalSection);
 		sum();
 		LeaveCriticalSection(&criricalSection);
-	}
-	else {
-		sum();
 	}
 	return 0;
 }
 
 DWORD WINAPI findAvg(LPVOID mode)
 {
-	if (!InitializeCriticalSectionAndSpinCount(&criricalSection, 0x00000400)){
-		return 0;
+	if (NOT_CRITICAL_SECTION_MODE) {
+		average();
 	}
-	if (!(int)mode) {
+	else { // CRITICAL_SECTION_MODE
+		if (!InitializeCriticalSectionAndSpinCount(&criricalSection, 0x00000400)) {
+			return 0;
+		}
 		EnterCriticalSection(&criricalSection);
 		average();
 		LeaveCriticalSection(&criricalSection);
-	}
-	else {
-		average();
 	}
 	return 0;
 }
 
 DWORD WINAPI findMax(LPVOID mode)
 {
-	//Initializes a critical section object and sets the spin count for the critical section. 
-	if (!InitializeCriticalSectionAndSpinCount(&criricalSection, 0x00000400)){
-		return 0;
+	
+	if (NOT_CRITICAL_SECTION_MODE) {
+		maximum();
 	}
-	if (!(int)mode) {
+	else { // CRITICAL_SECTION_MODE
+		//Initializes a critical section object and sets the spin count for the critical section. 
+		if (!InitializeCriticalSectionAndSpinCount(&criricalSection, 0x00000400)) {
+			return 0;
+		}
 		EnterCriticalSection(&criricalSection);
 		maximum();
 		LeaveCriticalSection(&criricalSection);
-	}else{
-		maximum();
 	}
 	return 0;
 }
@@ -108,9 +113,9 @@ int main()
 	printf("First mode = > use critical section\n");
 	start = clock();
 	//Create threads & execute
-	hThread[0] = CreateThread(NULL, 0, findSum, (LPVOID)0, 0, &ThreadId);
-	hThread[1] = CreateThread(NULL, 0, findAvg, (LPVOID)0, 0, &ThreadId);
-	hThread[2] = CreateThread(NULL, 0, findMax, (LPVOID)0, 0, &ThreadId);
+	hThread[0] = CreateThread(NULL, 0, findSum, (LPVOID)CRITICAL_SECTION_MODE, 0, &ThreadId);
+	hThread[1] = CreateThread(NULL, 0, findAvg, (LPVOID)CRITICAL_SECTION_MODE, 0, &ThreadId);
+	hThread[2] = CreateThread(NULL, 0, findMax, (LPVOID)CRITICAL_SECTION_MODE, 0, &ThreadId);
 	WaitForMultipleObjects(numberOfThreads, hThread, TRUE, INFINITE);
 
 	finish = clock();
@@ -128,9 +133,9 @@ int main()
 	printf("Second mode = > not use critical section\n");
 	start = clock();
 
-	hThread[0] = CreateThread(NULL, 0, findSum, (LPVOID)1, 0, &ThreadId);
-	hThread[1] = CreateThread(NULL, 0, findAvg, (LPVOID)1, 0, &ThreadId);
-	hThread[2] = CreateThread(NULL, 0, findMax, (LPVOID)1, 0, &ThreadId);
+	hThread[0] = CreateThread(NULL, 0, findSum, (LPVOID)NOT_CRITICAL_SECTION_MODE, 0, &ThreadId);
+	hThread[1] = CreateThread(NULL, 0, findAvg, (LPVOID)NOT_CRITICAL_SECTION_MODE, 0, &ThreadId);
+	hThread[2] = CreateThread(NULL, 0, findMax, (LPVOID)NOT_CRITICAL_SECTION_MODE, 0, &ThreadId);
 	WaitForMultipleObjects(numberOfThreads, hThread, TRUE, INFINITE);
 
 	finish = clock();
