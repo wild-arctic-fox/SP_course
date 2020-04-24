@@ -1,9 +1,0 @@
-﻿<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="UWP Default" type="UwpProject" factoryName="UWP" singleton="false">
-    <option name="PROJECT_PATH" value="$PROJECT_DIR$/UwpApplication1.csproj" />
-    <option name="PROGRAM_PARAMETERS" value="" />
-    <method v="2">
-      <option name="Build" />
-    </method>
-  </configuration>
-</component>
