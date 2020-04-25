@@ -31,6 +31,8 @@
 
 ![](img/4.jpg)
 
+![](img/7.jpg)
+
 - trigonometric mode
 
 ![](img/5.jpg)
