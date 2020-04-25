@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -18,6 +19,18 @@ namespace UwpApplication1
 {
     public sealed partial class MainPage : Page
     {
+        private const string ADD = "+";
+        private const string MUL = "*";
+        private const string DIV = "/";
+        private const string SUB = "-";
+        private const string SQRT = "sqrt";
+        private const string COS = "cos";
+        private const string SIN = "sin";
+        private const string TAN = "tan";
+        private const string CTAN = "ctan";
+        private const string LOG = "log";
+        private const string POW = "^";
+        
         private string action;
 
         public MainPage()
@@ -27,11 +40,12 @@ namespace UwpApplication1
 
         private double first_operand()
         {
-            try
-            {
+            try{
                 double f = Convert.ToDouble(operand1.Text);
+                Block.Text = "Operand 1";
                 return f;
             }catch (Exception e){
+                Block.Text = "Input error";
                 action = "";
                 return 0;
             }
@@ -42,8 +56,10 @@ namespace UwpApplication1
             try
             {
                 double f = Convert.ToDouble(operand2.Text);
+                TextBlock1.Text = "Operand 2";
                 return f;
             }catch (Exception e){
+                TextBlock1.Text = "Input error";
                 action = "";
                 return 0;
             }
@@ -54,37 +70,37 @@ namespace UwpApplication1
             string act = action;
             switch (act)
             {
-                case "*":
+                case MUL:
                     res.Text = (Math.Round(first_operand() * second_operand(), 3)).ToString();
                     break;
-                case "+":
+                case ADD:
                     res.Text = (Math.Round(first_operand() + second_operand(), 3)).ToString();
                     break;
-                case "/":
+                case DIV:
                     res.Text = (Math.Round(first_operand() / second_operand(), 3)).ToString();
                     break;
-                case "-":
+                case SUB:
                     res.Text = (Math.Round(first_operand() - second_operand(), 3)).ToString();
                     break;
-                case "cos":
+                case COS:
                     res.Text = (Math.Round(Math.Cos(first_operand()), 3)).ToString();
                     break;
-                case "sin":
+                case SIN:
                     res.Text = (Math.Round(Math.Sin(first_operand()), 3)).ToString();
                     break;
-                case "tan":
+                case TAN:
                     res.Text = (Math.Round(Math.Tan(first_operand()), 3)).ToString();
                     break;
-                case "ctan":
+                case CTAN:
                     res.Text = (Math.Round(Math.Atan(first_operand()), 3)).ToString();
                     break;
-                case "^":
+                case POW:
                     res.Text = Math.Round(Math.Pow(first_operand(), second_operand()), 3).ToString();
                     break;
-                case "sqrt":
+                case SQRT:
                     res.Text = Math.Round(Math.Sqrt(first_operand()), 3).ToString();
                     break;
-                case "log":
+                case LOG:
                     res.Text = Math.Round(Math.Log(first_operand(), second_operand()), 3).ToString();
                     break;
                 default:
@@ -103,7 +119,7 @@ namespace UwpApplication1
             }
         }
 
-        private void about_click(object sender, RoutedEventArgs e)
+private void about_click(object sender, RoutedEventArgs e)
         {
             about_me.Visibility = Visibility.Visible;
             Block.Visibility = Visibility.Collapsed;
@@ -121,27 +137,27 @@ namespace UwpApplication1
 
         private void arifm_click(object sender, RoutedEventArgs e)
         {
-            op1.Content = "+";
-            op2.Content = "-";
-            op3.Content = "/";
+            op1.Content = ADD;
+            op2.Content = SUB;
+            op3.Content = DIV;
+            op4.Content = MUL;
             op4.Visibility = Visibility.Visible;
-            op4.Content = "*";
         }
 
         private void trigonom_click(object sender, RoutedEventArgs e)
         {
-            op1.Content = "sin";
-            op2.Content = "cos";
-            op3.Content = "tan";
+            op1.Content = SIN;
+            op2.Content = COS;
+            op3.Content = TAN;
+            op4.Content = CTAN;
             op4.Visibility = Visibility.Visible;
-            op4.Content = "ctan";
         }
 
         private void algebr_click(object sender, RoutedEventArgs e)
         {
-            op1.Content = "^";
-            op2.Content = "sqrt";
-            op3.Content = "log";
+            op1.Content = POW;
+            op2.Content = SQRT;
+            op3.Content = LOG;
             op4.Visibility = Visibility.Collapsed;
         }
     }
